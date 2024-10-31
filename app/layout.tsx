@@ -21,7 +21,6 @@ export const revalidate = 0
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const userSongs = await getSongsByUserId()
-  const products = await getActiveProductsWithPrices()
 
   return (
     <html lang="en">
@@ -29,7 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
-            <ModalProvider products={products} />
+            <ModalProvider />
             <Sidebar songs={userSongs}>{children}</Sidebar>
             <Player />
           </UserProvider>
